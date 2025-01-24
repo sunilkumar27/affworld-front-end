@@ -14,6 +14,9 @@ const GoogleCallback = () => {
   const { setUser } = useAuth();
 
   useEffect(() => {
+    console.log("Current URL:", window.location.href);
+    console.log("Search Params:", Object.fromEntries(searchParams));
+    
     /**
      * Process OAuth callback data and update authentication state
      */

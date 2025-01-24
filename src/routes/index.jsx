@@ -58,7 +58,13 @@ export const routes = [
   // Google OAuth callback
   {
     path: ROUTES.GOOGLE_CALLBACK,
-    element: <GoogleCallback />
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<LoadingSpinner />}>
+          <GoogleCallback />
+        </Suspense>
+      </PublicRoute>
+    )
   },
   // Protected application routes
   {
