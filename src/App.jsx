@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { LoadingSpinner } from './components/shared';
 import { routes } from './routes';
 import 'react-toastify/dist/ReactToastify.css';
+import { healthCheckService } from './services/healthCheck';
 
 const toastConfig = {
   position: "top-right",
@@ -23,6 +24,13 @@ const toastConfig = {
 * Main application component. Sets up routing, authentication, and global toast notifications
 */
 const App = () => {
+  useEffect(() => {
+    // Start health check when app mounts
+    healthCheckService.startHealthCheck();
+
+    // Cleanup when app unmounts
+    return () => healthCheckService.stopHealthCheck();
+  }, []);
   console.log('App mounted - Current path:', window.location.pathname);
   console.log("Routes being registered:", routes.map(route => ({
     path: route.path,
