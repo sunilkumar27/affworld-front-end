@@ -42,16 +42,12 @@ const PostCard = ({ post, onUpdate }) => {
       <div className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            {user.profilePicture ? (
+            {user.profilePicture && (
               <img
                 src={user.profilePicture}
                 alt={user.name}
                 className="w-12 h-12"
               />
-            ) : (
-              <div className="text-xl font-bold text-text-primary">
-                {user.toUpperCase()}
-              </div>
             )}
             <span className="text-xl font-bold text-text-primary">
               {user.name}
