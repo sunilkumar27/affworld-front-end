@@ -17,6 +17,9 @@ const PostCard = ({ post, onUpdate }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState(null);
 
+  // Get the user ID based on the authentication method
+  const userId = user._id || user.id;
+
   /**
    * Handles post deletion with error handling
    */
@@ -54,7 +57,7 @@ const PostCard = ({ post, onUpdate }) => {
             </span>
           </div>
           {/* Delete button - visible only to post owner */}
-          {user && user._id === post.userId._id && (
+          {user && userId === post.userId._id && (
             <div>
               <button
                 onClick={() => setShowConfirmDelete(true)}
