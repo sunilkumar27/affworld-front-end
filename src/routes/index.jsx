@@ -57,7 +57,7 @@ export const routes = [
   },
   // Google OAuth callback
   {
-    path: ROUTES.GOOGLE_CALLBACK,
+    path: '/auth/google/callback',  // Use the exact string instead of ROUTES constant for testing
     element: <PublicRoute><GoogleCallback /></PublicRoute>
   },
   // Protected application routes

@@ -22,7 +22,14 @@ const toastConfig = {
 /**
 * Main application component. Sets up routing, authentication, and global toast notifications
 */
-const App = () => (
+const App = () => {
+  console.log('App mounted - Current path:', window.location.pathname);
+  console.log("Routes being registered:", routes.map(route => ({
+    path: route.path,
+    element: route.element.type.name
+  })));
+
+  return (
   <Router>
     <AuthProvider>
       <Suspense fallback={<LoadingSpinner />}>
@@ -39,6 +46,6 @@ const App = () => (
       <ToastContainer {...toastConfig} />
     </AuthProvider>
   </Router>
-);
+)};
 
 export default App;
