@@ -1,5 +1,7 @@
 // src/components/auth/GoogleButton.jsx
 import React from 'react';
+import { useAuth } from '../../context/auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { APP_CONFIG } from '../../constants/config';
 
 /**
