@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../context/auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { APP_CONFIG } from '../../constants/config';
-import { useEffect } from 'react';
 
 /**
  * Google icon SVG component
