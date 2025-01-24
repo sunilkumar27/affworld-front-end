@@ -10,12 +10,16 @@ import { LoadingSpinner } from '../../components/shared';
  * Updates local storage and auth context before closing popup
  */
 const GoogleCallback = () => {
+  console.log("GoogleCallback mounted - URL:", window.location.href);
+
   const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
 
   useEffect(() => {
-    console.log("Current URL:", window.location.href);
-    console.log("Search Params:", Object.fromEntries(searchParams));
+    console.log("Params received:", {
+      token: searchParams.get('token'),
+      user: searchParams.get('user')
+    });
     
     /**
      * Process OAuth callback data and update authentication state
