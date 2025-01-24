@@ -28,11 +28,11 @@ const GoogleIcon = ({ className }) => (
  * 
  * @component
  */
-export const GoogleButton = () => {
+/*export const GoogleButton = () => {
   /**
    * Opens a centered popup window for Google OAuth
    * Window dimensions and position are calculated based on screen size
-   */
+   
   const handleGoogleLogin = () => {
     // Get configured popup dimensions or use defaults
     const { width = 500, height = 600 } = APP_CONFIG.auth.googleAuth || {};
@@ -61,6 +61,54 @@ export const GoogleButton = () => {
     >
       <GoogleIcon className="w-6 h-6" />
       <span>Continue with Google</span>
+    </button>
+  );
+};*/
+
+export const GoogleButton = () => {
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.origin !== import.meta.env.VITE_API_URL) return;
+
+      const { type, token, user, error } = event.data;
+
+      if (type === 'GOOGLE_AUTH_SUCCESS') {
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        setUser(user);
+        navigate('/tasks');
+        toast.success('Successfully logged in with Google');
+      }
+
+      if (type === 'GOOGLE_AUTH_ERROR') {
+        toast.error(error || 'Authentication failed');
+        navigate('/login');
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [setUser, navigate]);
+
+  const handleGoogleLogin = () => {
+    const width = 500;
+    const height = 600;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2;
+
+    window.open(
+      `${import.meta.env.VITE_API_URL}/auth/google`,
+      'Google Login',
+      `width=${width},height=${height},left=${left},top=${top}`
+    );
+  };
+
+  return (
+    <button onClick={handleGoogleLogin}>
+      Continue with Google
     </button>
   );
 };
