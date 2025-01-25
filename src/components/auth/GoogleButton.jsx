@@ -25,8 +25,7 @@ const GoogleIcon = ({ className }) => (
  * Google OAuth button component
  * Opens a centered popup window for Google authentication
  * Integrates with the backend OAuth endpoint
- * 
- * @component
+ * @returns {JSX.Element} Google button component
  **/
 export const GoogleButton = () => {
   /**

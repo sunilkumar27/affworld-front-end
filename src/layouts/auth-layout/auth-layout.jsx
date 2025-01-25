@@ -5,6 +5,9 @@ import { BackgroundGrid } from '../../components/shared';
 /**
  * Centralized layout for authentication pages
  * @param {AuthLayoutProps} props
+ * @param {Function} children - Render props function
+ * @param {String} title - Title of authentication page
+ * @returns {JSX.Element} Layout for authentication page
  */
 const AuthLayout = ({ children, title }) => (
   <div className="relative min-h-screen bg-gradient-to-b from-background to-secondary dark:from-background dark:to-secondary flex items-center justify-center flex-1">

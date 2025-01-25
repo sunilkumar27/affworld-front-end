@@ -8,12 +8,8 @@ import { FormInput, Button, AlertMessage } from '../../components/shared';
 /**
  * ForgotPassword component handles password reset request functionality
  * Allows users to request password reset instructions via email
+ * @returns {JSX.Element} ForgotPassword component
  * 
- * @component
- * @example
- * return (
- *   <ForgotPassword />
- * )
  */
 const ForgotPassword = () => {
   // State to manage email input value

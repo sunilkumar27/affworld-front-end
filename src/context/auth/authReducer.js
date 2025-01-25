@@ -1,5 +1,5 @@
+//src/context/auth/authReducer.js
 
-// src/context/auth/authReducer.js
 // Authentication state management reducer
 export const authReducer = (state, action) => {
   switch (action.type) {

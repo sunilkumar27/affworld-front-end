@@ -2,14 +2,11 @@
 import React from 'react';
 
 /**
- * @typedef {Object} AlertMessageProps
- * @property {'success' | 'error'} type - Alert type
- * @property {string} message - Alert message
- */
-
-/**
  * Reusable alert message component
  * @param {AlertMessageProps} props
+ * @param {string} type
+ * @param {string} message 
+ * @returns {JSX.Element} Alert message
  */
 export const AlertMessage = ({ type, message }) => {
   const styles = {

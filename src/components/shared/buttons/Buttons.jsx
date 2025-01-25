@@ -2,15 +2,6 @@
 import React from 'react';
 
 /**
- * @typedef {Object} ButtonProps
- * @property {React.ReactNode} children - Button content
- * @property {'primary' | 'secondary' | 'danger'} [variant] - Button variant
- * @property {boolean} [loading] - Loading state
- * @property {string} [className] - Additional CSS classes
- * @property {React.ButtonHTMLAttributes} rest - Other button props
- */
-
-/**
  * Reusable button component
  * @param {ButtonProps} props
  */

@@ -7,16 +7,9 @@ import { FormInput, Button, AlertMessage, Divider } from '../../components/share
 import { GoogleButton } from './GoogleButton';
 
 /**
- * @typedef {Object} RegisterFormData
- * @property {string} name - User's full name
- * @property {string} email - User email
- * @property {string} password - User password
- * @property {string} confirmPassword - Password confirmation
- */
-
-/**
  * Register component for user account creation
  * Supports both email/password and Google OAuth registration
+ * @returns {JSX.Element} Register component
  */
 const Register = () => {
   // Initialize form state with empty fields

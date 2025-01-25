@@ -6,6 +6,8 @@ import { APP_CONFIG } from '../../../constants/config';
 /**
  * Header for authentication pages with dynamic title
  * @param {AuthHeaderProps} props
+ * @param {string} title - Title of the page
+ * @returns {JSX.Element} Authetication Header
  */
 const AuthHeader = ({ title }) => (
   <div className="text-center mb-8">

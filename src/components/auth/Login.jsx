@@ -7,14 +7,8 @@ import { FormInput, Button, AlertMessage, Divider } from '../../components/share
 import { GoogleButton } from './GoogleButton'; 
 
 /**
- * @typedef {Object} LoginFormData
- * @property {string} email - User email
- * @property {string} password - User password
- */
-
-/**
  * Login component that handles both email/password and Google authentication
- * @component
+  * @returns {JSX.Element} Login component
  */
 const Login = () => {
   // Manage form state for email/password login
