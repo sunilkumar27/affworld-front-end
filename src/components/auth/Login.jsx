@@ -24,6 +24,17 @@ const Login = () => {
   // Handle async login with loading and error states
   const { loading, error, execute: handleLogin } = useAsync(login);
 
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.data?.type === 'GOOGLE_LOGIN_SUCCESS') {
+        window.location.href = '/tasks';
+      }
+    };
+  
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   /**
    * Handle form submission for email/password login
    * @param {Event} e - Form submission event

@@ -21,13 +21,15 @@ const GoogleCallback = () => {
       token: searchParams.get('token'),
       user: searchParams.get('user')
     });
-    
+
     /**
      * Process OAuth callback data and update authentication state
      */
     const handleCallback = async () => {
+      console.log('Current URL:', window.location.href);
       const token = searchParams.get('token');
       const userData = searchParams.get('user');
+      console.log('Received data:', { token, userData });
 
       if (!token || !userData) {
         handleAuthError('Invalid authentication response');
@@ -35,16 +37,18 @@ const GoogleCallback = () => {
       }
 
       try {
-        const user = JSON.parse(decodeURIComponent(userData));
+        const user = JSON.parse(userData);
+        console.log('Parsed user:', user);
+
         // Store authentication data
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
-        
+
         if (window.opener) {
-          window.opener.location.replace('/tasks');
-          setTimeout(() => window.close(), 100);
-          toast.success('Successfully logged in with Google');
+          const message = { type: 'GOOGLE_LOGIN_SUCCESS' };
+          window.opener.postMessage(message, window.location.origin);
+          window.close();
         }
       } catch (error) {
         console.error('Parse error:', error);
