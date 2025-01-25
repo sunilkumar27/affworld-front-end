@@ -1,5 +1,5 @@
 // src/components/auth/GoogleCallback.jsx
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { LoadingSpinner } from '../../components/shared';
