@@ -6,7 +6,6 @@ import { ToastContainer } from 'react-toastify';
 import { LoadingSpinner } from './components/shared';
 import { routes } from './routes';
 import 'react-toastify/dist/ReactToastify.css';
-import { healthCheckService } from './services/healthCheck';
 
 const toastConfig = {
   position: "top-right",
@@ -24,17 +23,11 @@ const toastConfig = {
 * Main application component. Sets up routing, authentication, and global toast notifications
 */
 const App = () => {
-  useEffect(() => {
-    console.log('Available Routes:', routes.map(r => r.path));
-    console.log('Current Path:', window.location.pathname);
-  }, []); 
-
+  
   return (
   <Router>
     <AuthProvider>
       <Suspense fallback={<LoadingSpinner />}>
-       {/* Log to ensure route is inside AuthProvider */}
-       {console.log('Route inside AuthProvider')}
         <Routes>
           {routes.map((route) => (
             <Route

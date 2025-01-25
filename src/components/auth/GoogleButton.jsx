@@ -1,7 +1,5 @@
 // src/components/auth/GoogleButton.jsx
-import React, { useEffect } from 'react';
-import { useAuth } from '../../context/auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { APP_CONFIG } from '../../constants/config';
 
 /**
@@ -36,26 +34,7 @@ export const GoogleButton = () => {
    * Window dimensions and position are calculated based on screen size
    **/
   const handleGoogleLogin = () => {
-    console.log('Starting Google login');
-    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
-
-    // Get configured popup dimensions or use defaults
-    /*const { width = 500, height = 600 } = APP_CONFIG.auth.googleAuth || {};
-    
-    // Calculate center position for popup
-    const left = (window.screen.width / 2) - (width / 2);
-    const top = (window.screen.height / 2) - (height / 2);
-
-    // Open OAuth popup window with centered positioning
-    const authWindow = window.open(
-      `${APP_CONFIG.api.baseURL}/auth/google`,
-      'Google OAuth',
-      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`
-    );
-
-    if (authWindow) {
-      authWindow.focus();
-    }*/
+    window.location.href = `${APP_CONFIG.api.baseURL}/auth/google`;
   };
 
   return (

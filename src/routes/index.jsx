@@ -35,26 +35,8 @@ const createProtectedRoute = (Component) => (
   </ProtectedRoute>
 );
 
-const DebugRoute = () => {
-  console.log('Full URL:', window.location.href);
-  return <div>Debug: {window.location.href}</div>;
-};
-
 // Application route configuration
 export const routes = [
-  // Google OAuth callback
-  {
-    path: ROUTES.GOOGLE_CALLBACK,
-    element: <PublicRoute><GoogleCallback /></PublicRoute>
-  },
-  // Debug route first
-  /*{
-    path: '*',
-    element: (() => {
-      console.log('404 - Path:', window.location.pathname);
-      return <div>404 - Path: {window.location.pathname}</div>;
-    })()
-  },*/
   // Redirect root to login page
   {
     path: ROUTES.HOME,
@@ -73,6 +55,11 @@ export const routes = [
     path: ROUTES.FORGOT_PASSWORD,
     element: createAuthLayoutRoute(ForgotPassword, "Reset your password")
   },
+  // Google OAuth callback
+  {
+    path: ROUTES.GOOGLE_CALLBACK,
+    element: <PublicRoute><GoogleCallback /></PublicRoute>
+  },
   // Protected application routes
   {
     path: ROUTES.TASKS,
@@ -81,11 +68,10 @@ export const routes = [
   {
     path: ROUTES.FEED,
     element: createProtectedRoute(FeedList)
-  }
-  /*,
+  },
   // Catch-all route to redirect to home
   {
     path: '*',
     element: <Navigate to={ROUTES.HOME} replace />
-  }*/
+  }
 ];
