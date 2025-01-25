@@ -35,17 +35,19 @@ const GoogleCallback = () => {
       }
 
       try {
-        const user = JSON.parse(userData);
+        const user = JSON.parse(decodeURIComponent(userData));
         // Store authentication data
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
         
-        // Close popup and redirect main window
-        window.close();
-        window.opener?.location.replace('/tasks');
-        toast.success('Successfully logged in with Google');
+        if (window.opener) {
+          window.opener.location.replace('/tasks');
+          setTimeout(() => window.close(), 100);
+          toast.success('Successfully logged in with Google');
+        }
       } catch (error) {
+        console.error('Parse error:', error);
         handleAuthError('Failed to process Google login');
       }
     };
