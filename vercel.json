@@ -1,0 +1,12 @@
+{
+    "routes": [
+      {
+        "src": "/auth/google/callback",
+        "dest": "/index.html"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }

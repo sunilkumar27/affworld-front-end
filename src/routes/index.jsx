@@ -35,8 +35,18 @@ const createProtectedRoute = (Component) => (
   </ProtectedRoute>
 );
 
+const DebugRoute = () => {
+  console.log('Full URL:', window.location.href);
+  return <div>Debug: {window.location.href}</div>;
+};
+
 // Application route configuration
 export const routes = [
+  // Google OAuth callback
+  {
+    path: ROUTES.GOOGLE_CALLBACK,
+    element: <DebugRoute />
+  },
   // Debug route first
   {
     path: '*',
@@ -49,11 +59,6 @@ export const routes = [
   {
     path: ROUTES.HOME,
     element: <PublicRoute><Navigate to={ROUTES.LOGIN} replace /></PublicRoute>
-  },
-  // Google OAuth callback
-  {
-    path: ROUTES.GOOGLE_CALLBACK,
-    element: <PublicRoute><GoogleCallback /></PublicRoute>
   },
   // Authentication routes
   {
