@@ -55,7 +55,7 @@ const GoogleCallback = () => {
     };
 
     handleCallback();
-  }, [searchParams, setUser]);
+  }, [searchParams, setUser, navigate]);
 
   return <LoadingSpinner />;
 };

@@ -11,6 +11,7 @@ import { ROUTES } from './paths';
  * Handles loading state during authentication check
  */
 export const PublicRoute = ({ children }) => {
+  console.log('PublicRoute rendered at:', window.location.pathname);
   const { user, loading } = useAuth();
 
   // Show loading spinner during initial auth verification

@@ -42,6 +42,11 @@ export const routes = [
     path: ROUTES.HOME,
     element: <PublicRoute><Navigate to={ROUTES.LOGIN} replace /></PublicRoute>
   },
+  // Google OAuth callback
+  {
+    path: ROUTES.GOOGLE_CALLBACK,
+    element: <PublicRoute><GoogleCallback /></PublicRoute>
+  },
   // Authentication routes
   {
     path: ROUTES.LOGIN,
@@ -54,11 +59,6 @@ export const routes = [
   {
     path: ROUTES.FORGOT_PASSWORD,
     element: createAuthLayoutRoute(ForgotPassword, "Reset your password")
-  },
-  // Google OAuth callback
-  {
-    path: '/auth/google/callback',  // Use the exact string instead of ROUTES constant for testing
-    element: <PublicRoute><GoogleCallback /></PublicRoute>
   },
   // Protected application routes
   {
