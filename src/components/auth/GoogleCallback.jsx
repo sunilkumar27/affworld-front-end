@@ -38,7 +38,11 @@ const GoogleCallback = () => {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
-        navigate('/tasks');
+        navigate('/tasks', { 
+          replace: true,
+          state: { from: '/auth/google/callback' }
+        });
+        console.log('Navigation attempted');
 
         // Close popup and redirect main window
         //window.close();
