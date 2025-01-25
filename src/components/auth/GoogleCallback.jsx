@@ -12,9 +12,6 @@ import { toast } from 'react-toastify';
  */
 const GoogleCallback = () => {
   const [searchParams] = useSearchParams();
-  const context = useContext(AuthContext);
-  console.log('Auth Context:', context); // Debug context
-
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
@@ -31,7 +28,6 @@ const GoogleCallback = () => {
 
       if (!token || !userData) {
         toast.error('Invalid authentication response');
-        navigate('/login');
         return;
       }
 
@@ -44,10 +40,7 @@ const GoogleCallback = () => {
         console.log("Local storage updated");
         setUser(user);
         console.log("User is updated to state");
-        navigate('/tasks', {
-          replace: true,
-          state: { from: '/auth/google/callback' }
-        });
+        window.location.href = '/tasks';
         console.log('Navigation attempted');
 
         // Close popup and redirect main window
@@ -57,7 +50,7 @@ const GoogleCallback = () => {
       } catch (error) {
         console.log(JSON.stringify(error));
         toast.error('Failed to process Google login');
-        navigate('/login');
+        window.location.href = '/login';
       }
     };
 
