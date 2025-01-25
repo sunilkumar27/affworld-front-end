@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { LoadingSpinner } from '../../components/shared';
+import { toast } from 'react-toastify';
 
 /**
  * Handles OAuth callback response from Google authentication
