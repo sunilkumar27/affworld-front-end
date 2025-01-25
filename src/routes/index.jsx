@@ -37,6 +37,11 @@ const createProtectedRoute = (Component) => (
 
 // Application route configuration
 export const routes = [
+  // Debug route first
+  {
+    path: '*',
+    element: <div>404 - Current path: {window.location.pathname}</div>
+  },
   // Redirect root to login page
   {
     path: ROUTES.HOME,
@@ -68,10 +73,11 @@ export const routes = [
   {
     path: ROUTES.FEED,
     element: createProtectedRoute(FeedList)
-  },
+  }
+  /*,
   // Catch-all route to redirect to home
   {
     path: '*',
     element: <Navigate to={ROUTES.HOME} replace />
-  }
+  }*/
 ];
