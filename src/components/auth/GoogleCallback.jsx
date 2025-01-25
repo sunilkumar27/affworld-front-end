@@ -1,6 +1,6 @@
 // src/components/auth/GoogleCallback.jsx
 import { useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { LoadingSpinner } from '../../components/shared';
 import { toast } from 'react-toastify';
@@ -13,7 +13,6 @@ import { toast } from 'react-toastify';
 const GoogleCallback = () => {
   const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -37,16 +36,15 @@ const GoogleCallback = () => {
         localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
 
-        window.location.href = '/tasks';
         toast.success('Successfully logged in with Google');
       } catch (error) {
-        toast.error('Failed to process Google login');
-        window.location.href = '/login';
+        console.log('Failed to process Google login');        
       }
+      window.location.href = '/login';
     };
 
     handleCallback();
-  }, [searchParams, setUser, navigate]);
+  }, [searchParams, setUser]);
 
   return <LoadingSpinner />;
 };
