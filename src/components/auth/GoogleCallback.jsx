@@ -34,10 +34,13 @@ const GoogleCallback = () => {
 
       try {
         const user = JSON.parse(userData);
+        console.log("User : " + JSON.stringify(user));
         // Store authentication data
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
+        console.log("Local storage updated");
         setUser(user);
+        console.log("User is updated to state");
         navigate('/tasks', { 
           replace: true,
           state: { from: '/auth/google/callback' }
