@@ -1,5 +1,5 @@
 // src/components/auth/GoogleCallback.jsx
-import { useEffect } from 'react';
+import { useEffect, useNavigate } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { LoadingSpinner } from '../../components/shared';
@@ -15,44 +15,42 @@ const GoogleCallback = () => {
 
   const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("Params received:", {
       token: searchParams.get('token'),
       user: searchParams.get('user')
     });
-
+    
     /**
      * Process OAuth callback data and update authentication state
      */
     const handleCallback = async () => {
-      console.log('Current URL:', window.location.href);
       const token = searchParams.get('token');
       const userData = searchParams.get('user');
-      console.log('Received data:', { token, userData });
 
       if (!token || !userData) {
         handleAuthError('Invalid authentication response');
+        navigate('/login');
         return;
       }
 
       try {
         const user = JSON.parse(userData);
-        console.log('Parsed user:', user);
-
         // Store authentication data
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
         setUser(user);
+        navigate('/tasks');
 
-        if (window.opener) {
-          const message = { type: 'GOOGLE_LOGIN_SUCCESS' };
-          window.opener.postMessage(message, window.location.origin);
-          window.close();
-        }
+        // Close popup and redirect main window
+        //window.close();
+        //window.opener?.location.replace('/tasks');
+        toast.success('Successfully logged in with Google');
       } catch (error) {
-        console.error('Parse error:', error);
         handleAuthError('Failed to process Google login');
+        navigate('/login');
       }
     };
 

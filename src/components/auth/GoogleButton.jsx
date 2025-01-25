@@ -36,8 +36,10 @@ export const GoogleButton = () => {
    * Window dimensions and position are calculated based on screen size
    **/
   const handleGoogleLogin = () => {
+    window.location.href = `${APP_CONFIG.api.baseURL}/auth/google`;
+
     // Get configured popup dimensions or use defaults
-    const { width = 500, height = 600 } = APP_CONFIG.auth.googleAuth || {};
+    /*const { width = 500, height = 600 } = APP_CONFIG.auth.googleAuth || {};
     
     // Calculate center position for popup
     const left = (window.screen.width / 2) - (width / 2);
@@ -52,7 +54,7 @@ export const GoogleButton = () => {
 
     if (authWindow) {
       authWindow.focus();
-    }
+    }*/
   };
 
   return (
