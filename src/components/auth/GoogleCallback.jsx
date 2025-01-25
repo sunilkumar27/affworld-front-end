@@ -12,13 +12,16 @@ import { toast } from 'react-toastify';
  */
 const GoogleCallback = () => {
   const [searchParams] = useSearchParams();
+  const context = useContext(AuthContext);
+  console.log('Auth Context:', context); // Debug context
+
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log('Component Mount Path:', window.location.pathname);
     console.log('Query Params:', window.location.search);
-    
+
     /**
      * Process OAuth callback data and update authentication state
      */
@@ -41,7 +44,7 @@ const GoogleCallback = () => {
         console.log("Local storage updated");
         setUser(user);
         console.log("User is updated to state");
-        navigate('/tasks', { 
+        navigate('/tasks', {
           replace: true,
           state: { from: '/auth/google/callback' }
         });

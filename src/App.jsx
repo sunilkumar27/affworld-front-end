@@ -33,6 +33,8 @@ const App = () => {
   <Router>
     <AuthProvider>
       <Suspense fallback={<LoadingSpinner />}>
+       {/* Log to ensure route is inside AuthProvider */}
+       {console.log('Route inside AuthProvider')}
         <Routes>
           {routes.map((route) => (
             <Route
