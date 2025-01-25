@@ -31,7 +31,7 @@ const App = () => {
     // Cleanup when app unmounts
     return () => healthCheckService.stopHealthCheck();
   }, []);
-  console.log('App mounted - Current path:', window.location.pathname);
+  console.log('Current path:', window.location.pathname);
   console.log("Routes being registered:", routes.map(route => ({
     path: route.path,
     element: route.element.type.name

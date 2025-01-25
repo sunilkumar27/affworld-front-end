@@ -40,7 +40,10 @@ export const routes = [
   // Debug route first
   {
     path: '*',
-    element: <div>404 - Current path: {window.location.pathname}</div>
+    element: (() => {
+      console.log('404 - Path:', window.location.pathname);
+      return <div>404 - Path: {window.location.pathname}</div>;
+    })()
   },
   // Redirect root to login page
   {

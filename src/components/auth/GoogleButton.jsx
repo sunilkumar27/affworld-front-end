@@ -36,7 +36,8 @@ export const GoogleButton = () => {
    * Window dimensions and position are calculated based on screen size
    **/
   const handleGoogleLogin = () => {
-    window.location.href = `${APP_CONFIG.api.baseURL}/auth/google`;
+    console.log('Starting Google login');
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
 
     // Get configured popup dimensions or use defaults
     /*const { width = 500, height = 600 } = APP_CONFIG.auth.googleAuth || {};
