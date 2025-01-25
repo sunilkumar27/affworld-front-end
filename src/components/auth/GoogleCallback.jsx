@@ -1,6 +1,6 @@
 // src/components/auth/GoogleCallback.jsx
-import { useEffect, useNavigate } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { LoadingSpinner } from '../../components/shared';
 import { toast } from 'react-toastify';
@@ -31,7 +31,7 @@ const GoogleCallback = () => {
       const userData = searchParams.get('user');
 
       if (!token || !userData) {
-        handleAuthError('Invalid authentication response');
+        toast.error('Invalid authentication response');
         navigate('/login');
         return;
       }
@@ -49,20 +49,9 @@ const GoogleCallback = () => {
         //window.opener?.location.replace('/tasks');
         toast.success('Successfully logged in with Google');
       } catch (error) {
-        handleAuthError('Failed to process Google login');
+        toast.error('Failed to process Google login');
         navigate('/login');
       }
-    };
-
-    /**
-     * Handle authentication errors and redirect
-     * @param {string} message - Error message to display
-     */
-    const handleAuthError = (message) => {
-      console.error('Google Auth Error:', message);
-      window.close();
-      window.opener?.location.replace('/login');
-      toast.error(message);
     };
 
     handleCallback();
