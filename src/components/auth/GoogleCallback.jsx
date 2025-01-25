@@ -45,6 +45,7 @@ const GoogleCallback = () => {
         //window.opener?.location.replace('/tasks');
         toast.success('Successfully logged in with Google');
       } catch (error) {
+        console.log(JSON.stringify(error));
         toast.error('Failed to process Google login');
         navigate('/login');
       }
