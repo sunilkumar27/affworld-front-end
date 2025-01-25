@@ -2,9 +2,9 @@
 import React from 'react';
 
 /**
- * Header component for the feed section with create post button
+ * Header component for the feed section with add feed button
  * @param {Object} props
- * @param {Function} props.onCreateClick - Handler for create post button click
+ * @param {Function} props.onCreateClick - Handler for add feed button click
  */
 export const FeedHeader = ({ onCreateClick }) => (
   <div className="flex justify-between items-center mb-4">
@@ -28,7 +28,7 @@ export const FeedHeader = ({ onCreateClick }) => (
       >
         <path d="M12 5v14M5 12h14"/>
       </svg>
-      Create Post
+      Add Feed
     </button>
   </div>
 );
