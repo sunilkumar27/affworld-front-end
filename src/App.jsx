@@ -25,17 +25,9 @@ const toastConfig = {
 */
 const App = () => {
   useEffect(() => {
-    // Start health check when app mounts
-    healthCheckService.startHealthCheck();
-
-    // Cleanup when app unmounts
-    return () => healthCheckService.stopHealthCheck();
-  }, []);
-  console.log('Current path:', window.location.pathname);
-  console.log("Routes being registered:", routes.map(route => ({
-    path: route.path,
-    element: route.element.type.name
-  })));
+    console.log('Available Routes:', routes.map(r => r.path));
+    console.log('Current Path:', window.location.pathname);
+  }, []); 
 
   return (
   <Router>

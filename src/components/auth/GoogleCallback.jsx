@@ -11,17 +11,13 @@ import { toast } from 'react-toastify';
  * Updates local storage and auth context before closing popup
  */
 const GoogleCallback = () => {
-  console.log("GoogleCallback mounted - URL:", window.location.href);
-
   const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Params received:", {
-      token: searchParams.get('token'),
-      user: searchParams.get('user')
-    });
+    console.log('Component Mount Path:', window.location.pathname);
+    console.log('Query Params:', window.location.search);
     
     /**
      * Process OAuth callback data and update authentication state
