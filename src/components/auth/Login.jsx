@@ -1,5 +1,5 @@
 // src/components/auth/Login.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth/AuthContext';
 import { useAsync } from '../../hooks/useAsync';
